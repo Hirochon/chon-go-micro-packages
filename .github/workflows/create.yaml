@@ -1,0 +1,31 @@
+name: copy something from aggregation-pb
+on:
+  repository_dispatch:
+    types: [target-updated]
+jobs:
+  copy-target:
+    runs-on: ubuntu-20.04
+    name: copy hello
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: clone chon-go-micro-packages
+        uses: actions/checkout@v2
+        with:
+          repository: Hirochon/chon-go-micro-packages
+          path: chon-go-micro-packages
+          token: ${{ secrets.ACCESS_TOKEN }}
+      - name: copy hello
+        run: cp chon-go-micro-packages/hello hello
+      - name: clean chon-go-micro-packages
+        run: rm -rf chon-go-micro-packages
+      - name: create PR
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          commit-message: 'copy hello'
+          branch: copy_target
+          branch-suffix: timestamp
+          delete-branch: true
+          title: 'updated hello'

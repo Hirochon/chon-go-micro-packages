@@ -16,7 +16,7 @@ jobs:
           path: aggregation-pb
           token: ${{ secrets.ACCESS_TOKEN }}
       - name: ls
-        run: ls
+        run: ls aggregation-pb
       - name: copy hello
         run: cp aggregation-pb/hello hello
       - name: clean aggregation-pb

@@ -15,6 +15,8 @@ jobs:
           repository: Hirochon/chon-go-micro-packages
           path: chon-go-micro-packages
           token: ${{ secrets.ACCESS_TOKEN }}
+      - name: ls
+        run: ls
       - name: copy hello
         run: cp chon-go-micro-packages/hello hello
       - name: clean chon-go-micro-packages

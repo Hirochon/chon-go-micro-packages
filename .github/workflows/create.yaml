@@ -18,7 +18,7 @@ jobs:
       - name: ls
         run: ls aggregation-pb
       - name: copy hello
-        run: cp aggregation-pb/hello hello
+        run: cp -r aggregation-pb/hello hello
       - name: clean aggregation-pb
         run: rm -rf aggregation-pb
       - name: create PR

@@ -9,18 +9,18 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
-      - name: clone chon-go-micro-packages
+      - name: clone aggregation-pb
         uses: actions/checkout@v2
         with:
-          repository: Hirochon/chon-go-micro-packages
-          path: chon-go-micro-packages
+          repository: Hirochon/aggregation-pb
+          path: aggregation-pb
           token: ${{ secrets.ACCESS_TOKEN }}
       - name: ls
         run: ls
       - name: copy hello
-        run: cp chon-go-micro-packages/hello hello
-      - name: clean chon-go-micro-packages
-        run: rm -rf chon-go-micro-packages
+        run: cp aggregation-pb/hello hello
+      - name: clean aggregation-pb
+        run: rm -rf aggregation-pb
       - name: create PR
         uses: peter-evans/create-pull-request@v3
         with:
